@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Scripts/Forest.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
+
+[node name="Forest" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( -52.1425, -44.8119 )
+transform/scale = Vector2( 0.439807, 0.439807 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 55.3724, -41.5539 )
+transform/scale = Vector2( 0.439807, 0.439807 )
+texture = ExtResource( 2 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 60.2594, 61.8884 )
+transform/scale = Vector2( 0.439807, 0.439807 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( -45.6264, 61.8884 )
+transform/scale = Vector2( 0.439807, 0.439807 )
+texture = ExtResource( 2 )
+
+[connection signal="input_event" from="." to="." method="_on_Forest_input_event"]
+
+

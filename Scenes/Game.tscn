@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Forest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=3]
+
+[node name="Game" type="Node2D"]
+
+script/script = ExtResource( 1 )
+night_duration = 5.0
+
+[node name="Forest" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 100.992, 99.4844 )
+
+[node name="Beach" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 539.83, 379.178 )
+
+
