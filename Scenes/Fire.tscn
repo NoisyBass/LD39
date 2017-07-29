@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Scenes/FireManager.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/CampFire.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "Low Fire"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Color( 0.414848, 0.396729, 0.976562, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "Medium Fire"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.5304, 34.3147 )
+
+[node name="FireManager" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+"anims/Low Fire" = SubResource( 2 )
+"anims/Medium Fire" = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+hframes = 5
+frame = 1
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.716972, -0.71697 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( 0.716972, -0.71697 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+
+
