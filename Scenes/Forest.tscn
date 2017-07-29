@@ -19,6 +19,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+regen_time = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -49,6 +50,23 @@ texture = ExtResource( 2 )
 transform/pos = Vector2( -45.6264, 61.8884 )
 transform/scale = Vector2( 0.439807, 0.439807 )
 texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -20.0
+margin/top = -17.0
+margin/right = 20.0
+margin/bottom = 20.0
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="input_event" from="." to="." method="_on_Forest_input_event"]
 

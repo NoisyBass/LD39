@@ -37,6 +37,7 @@ transform/pos = Vector2( 539.83, 379.178 )
 
 [node name="Fade" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/scale = Vector2( 63.9367, 47.9252 )
 texture = ExtResource( 4 )
 centered = false
@@ -52,5 +53,54 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Food" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 214.0
+margin/top = 16.0
+margin/right = 278.0
+margin/bottom = 30.0
+text = "Food: "
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Wood" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 321.0
+margin/top = 16.0
+margin/right = 385.0
+margin/bottom = 30.0
+text = "Wood: "
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TIME" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 229.0
+margin/top = 158.0
+margin/right = 394.0
+margin/bottom = 263.0
+text = "DAY"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
