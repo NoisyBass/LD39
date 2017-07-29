@@ -21,10 +21,12 @@ func _process(delta):
 		night_accum += delta
 		if (night_accum >= night_duration):
 			print("DAY")
+			get_node("Fade/AnimationPlayer").play("Fade")
 			state = game_state.DAY
 		
 func on_click():
 	if (state == game_state.DAY):
 		print("NIGHT")
+		get_node("Fade/AnimationPlayer").play("Fade")
 		night_accum = 0
 		state = game_state.NIGHT
