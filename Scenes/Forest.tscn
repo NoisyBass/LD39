@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/Forest.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Tree_0.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,44 +12,21 @@ extents = Vector2( 100, 100 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.663422, -7.62939e-06 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
-regen_time = 2
+regen_days = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+transform/pos = Vector2( 0.663422, -7.62939e-06 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-
-[node name="Sprite" type="Sprite" parent="."]
-
-transform/pos = Vector2( -52.1425, -44.8119 )
-transform/scale = Vector2( 0.439807, 0.439807 )
-texture = ExtResource( 2 )
-
-[node name="Sprite3" type="Sprite" parent="."]
-
-transform/pos = Vector2( 55.3724, -41.5539 )
-transform/scale = Vector2( 0.439807, 0.439807 )
-texture = ExtResource( 2 )
-
-[node name="Sprite1" type="Sprite" parent="."]
-
-transform/pos = Vector2( 60.2594, 61.8884 )
-transform/scale = Vector2( 0.439807, 0.439807 )
-texture = ExtResource( 2 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-
-transform/pos = Vector2( -45.6264, 61.8884 )
-transform/scale = Vector2( 0.439807, 0.439807 )
-texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 
@@ -67,6 +44,21 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Tree_0" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -39.521, -40.1845 )
+transform/scale = Vector2( 0.372118, 0.372118 )
+
+[node name="Tree_1" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 0.947598, 52.6944 )
+transform/scale = Vector2( 0.372118, 0.372118 )
+
+[node name="Tree_2" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 48.7138, -38.1942 )
+transform/scale = Vector2( 0.372118, 0.372118 )
 
 [connection signal="input_event" from="." to="." method="_on_Forest_input_event"]
 

@@ -13,5 +13,11 @@ func _on_Beach_input_event( viewport, event, shape_idx ):
 	if (food > 0):
 		if (event.type==InputEvent.MOUSE_BUTTON and event.pressed):
 			get_parent().add_food()
-			food -= 1
-			get_node("Label").set_text(str(food))
+			add_food(-1)
+			
+func regenerate_food():
+	add_food(1)
+	
+func add_food(amount):
+	food += amount
+	get_node("Label").set_text(str(food))
