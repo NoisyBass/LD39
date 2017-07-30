@@ -39,12 +39,14 @@ func set_day():
 	print("DAY")
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
+	"""
 	var timer = get_node("Timer")
 	var fade_half_len = animator.get_current_animation_length() / 2
 	timer.set_wait_time(fade_half_len)
 	timer.connect("timeout", get_node("DayCycleTint"), "hide", [],
 	              CONNECT_ONESHOT)
 	timer.start()
+	"""
 	get_node("Forest").day_finished()
 	get_node("Beach").day_finished()
 	get_node("FireManager").day_comes()
@@ -59,12 +61,14 @@ func set_night():
 	night_accum = 0
 	state = game_state.NIGHT
 	get_node("TIME").set_text("NIGHT")
+	"""
 	var timer = get_node("Timer")
 	var fade_half_len = animator.get_current_animation_length() / 2
 	timer.set_wait_time(fade_half_len)
 	timer.connect("timeout", get_node("DayCycleTint"), "show", [],
 	              CONNECT_ONESHOT)
 	timer.start()
+	"""
 
 func update_values():
 	get_node("Wood").set_text("Wood: " + str(wood))

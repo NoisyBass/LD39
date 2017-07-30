@@ -22,18 +22,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("../DayCycleTint")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 1 ),
-"transitions": FloatArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": ""
-} ]
-}
 
 [node name="Game" type="Node2D"]
 
@@ -104,14 +92,6 @@ max_lines_visible = -1
 [node name="FireManager" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 144.705, 305.99 )
-
-[node name="DayCycleTint" type="Sprite" parent="."]
-
-visibility/visible = false
-transform/scale = Vector2( 64, 48 )
-texture = ExtResource( 6 )
-centered = false
-modulate = Color( 0.529412, 0, 1, 0.469961 )
 
 [node name="Fade" type="Sprite" parent="."]
 
