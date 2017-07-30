@@ -38,12 +38,14 @@ func set_day():
 	get_node("Fade/AnimationPlayer").play("Fade")
 	get_node("Forest").day_finished()
 	get_node("Beach").day_finished()
+	get_node("FireManager").day_comes()
 	state = game_state.DAY
 	get_node("TIME").set_text("DAY")
 
 func set_night():
 	print("NIGHT")
 	get_node("Fade/AnimationPlayer").play("Fade")
+	get_node("FireManager").night_comes()
 	night_accum = 0
 	state = game_state.NIGHT
 	get_node("TIME").set_text("NIGHT")
