@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 func _on_Beach_input_event( viewport, event, shape_idx ):
-	if (food > 0):
+	if (get_parent().is_day() and food > 0):
 		if (event.type==InputEvent.MOUSE_BUTTON and event.pressed):
 			get_parent().add_food()
 			add_food(-1)
@@ -21,3 +21,9 @@ func regenerate_food():
 func add_food(amount):
 	food += amount
 	get_node("Label").set_text(str(food))
+	
+func day_finished():
+	#for tree in trees:
+	#	if (tree.is_regenerating()):
+	#		tree.day_finished()
+	pass

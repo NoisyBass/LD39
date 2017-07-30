@@ -36,6 +36,8 @@ func add_food():
 func set_day():
 	print("DAY")
 	get_node("Fade/AnimationPlayer").play("Fade")
+	get_node("Forest").day_finished()
+	get_node("Beach").day_finished()
 	state = game_state.DAY
 	get_node("TIME").set_text("DAY")
 
@@ -55,3 +57,6 @@ func set_wood(value):
 
 func get_wood():
 	return wood
+	
+func is_day():
+	return state == game_state.DAY
