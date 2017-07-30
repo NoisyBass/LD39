@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var animator
 var since_last_kindle
@@ -28,7 +28,8 @@ func unkindle():
 	if (idx > 0 and since_last_kindle >= timeouts[idx]):
 		animator.play(animations[idx - 1])
 
-# Just for testing
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed):
+	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed and
+	    get_parent().get("wood") > 0):
+		get_parent().set("wood", get_parent().get("wood") - 1)
 		kindle()

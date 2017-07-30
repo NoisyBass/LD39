@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://Scenes/FireManager.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/FireManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/CampFire.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -115,7 +115,7 @@ tracks/1/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 16.5304, 34.3147 )
 
-[node name="FireManager" type="Node"]
+[node name="FireManager" type="Node2D"]
 
 script/script = ExtResource( 1 )
 animations = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
