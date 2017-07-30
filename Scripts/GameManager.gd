@@ -52,7 +52,9 @@ func update_values():
 	get_node("Wood").set_text("Wood: " + str(wood))
 	get_node("Food").set_text("Food: " +  str(food))
 
+# Food get/set
 func set_wood(value):
+	wood = value
 	get_node("Wood").set_text("Wood: " + str(wood))
 
 func get_wood():

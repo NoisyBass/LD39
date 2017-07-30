@@ -118,8 +118,9 @@ extents = Vector2( 16.5304, 34.3147 )
 [node name="FireManager" type="Node2D"]
 
 script/script = ExtResource( 1 )
-animations = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
-timeouts = [ 60, 40, 30, 15 ]
+day_fire = null
+night_fire_anims = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
+night_fire_timeouts = [ 60, 40, 30, 15 ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -139,8 +140,7 @@ autoplay = ""
 
 texture = ExtResource( 2 )
 hframes = 5
-frame = 3
-modulate = Color( 1, 0.308594, 0.308594, 1 )
+modulate = Color( 0, 0.00317383, 0.203125, 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="Area2D" type="Area2D" parent="."]
