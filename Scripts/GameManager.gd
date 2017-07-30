@@ -14,19 +14,19 @@ func _ready():
 	night_accum = 0
 	update_values()
 	set_process(true)
-	
+
 func _process(delta):
 	if (state == game_state.NIGHT):
 		night_accum += delta
 		if (night_accum >= night_duration):
 			set_day()
-		
+
 func add_wood():
 	if (state == game_state.DAY):
 		set_night()
 		wood += 1
 		update_values()
-		
+
 func add_food():
 	if (state == game_state.DAY):
 		set_night()
@@ -35,7 +35,14 @@ func add_food():
 
 func set_day():
 	print("DAY")
-	get_node("Fade/AnimationPlayer").play("Fade")
+	var animator = get_node("Fade/AnimationPlayer")
+	animator.play("Fade")
+	var timer = get_node("Timer")
+	var fade_half_len = animator.get_current_animation_length() / 2
+	timer.set_wait_time(fade_half_len)
+	timer.connect("timeout", get_node("DayCycleTint"), "hide", [],
+	              CONNECT_ONESHOT)
+	timer.start()
 	get_node("Forest").day_finished()
 	get_node("Beach").day_finished()
 	get_node("FireManager").day_comes()
@@ -44,11 +51,18 @@ func set_day():
 
 func set_night():
 	print("NIGHT")
-	get_node("Fade/AnimationPlayer").play("Fade")
+	var animator = get_node("Fade/AnimationPlayer")
+	animator.play("Fade")
 	get_node("FireManager").night_comes()
 	night_accum = 0
 	state = game_state.NIGHT
 	get_node("TIME").set_text("NIGHT")
+	var timer = get_node("Timer")
+	var fade_half_len = animator.get_current_animation_length() / 2
+	timer.set_wait_time(fade_half_len)
+	timer.connect("timeout", get_node("DayCycleTint"), "show", [],
+	              CONNECT_ONESHOT)
+	timer.start()
 
 func update_values():
 	get_node("Wood").set_text("Wood: " + str(wood))

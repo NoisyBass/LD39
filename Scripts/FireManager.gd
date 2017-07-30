@@ -20,9 +20,9 @@ func _process(delta):
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed and
-	    self.get_parent().wood):
-		if self.animator.get_current_animation() != self.night_anims[-1]:
-			self.get_parent().wood = self.get_parent().wood - 1
+	    self.get_parent().wood and
+	    self.animator.get_current_animation() != self.night_anims[-1]):
+			self.get_parent().wood -= 1
 			self.kindle()
 
 func night_comes():
@@ -42,5 +42,5 @@ func kindle():
 
 func unkindle():
 	var idx = self.night_anims.find(self.animator.get_current_animation())
-	if (idx > 0 and self.since_last_kindle >= self.night_timeouts[idx]):
+	if idx > 0 and self.since_last_kindle >= self.night_timeouts[idx]:
 		self.animator.play(self.night_anims[idx - 1])
