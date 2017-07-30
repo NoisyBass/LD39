@@ -7,10 +7,9 @@ var trees = []
 
 func _ready():
 	wood = initial_wood
-	trees.append(get_node("Tree_" + str(0)))
-	trees.append(get_node("Tree_" + str(1)))
-	trees.append(get_node("Tree_" + str(2)))
-	
+	for i in range(initial_wood):
+		trees.append(get_node("Tree_" + str(i)))
+		
 	for tree in trees:
 		tree.set_regen_days(regen_days)
 		

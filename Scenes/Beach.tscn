@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/Beach.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Fish_0.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,48 +19,13 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
-regen_time = 2
+regen_days = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-
-[node name="Sprite" type="Sprite" parent="."]
-
-transform/pos = Vector2( -39.5582, -39.5582 )
-transform/scale = Vector2( 0.381903, 0.381903 )
-texture = ExtResource( 2 )
-modulate = Color( 0.808685, 0, 0.855469, 1 )
-
-[node name="Sprite1" type="Sprite" parent="."]
-
-transform/pos = Vector2( 39.1121, -60.6108 )
-transform/scale = Vector2( 0.381903, 0.381903 )
-texture = ExtResource( 2 )
-modulate = Color( 0.808685, 0, 0.855469, 1 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-
-transform/pos = Vector2( 49.0844, 12.5193 )
-transform/scale = Vector2( 0.381903, 0.381903 )
-texture = ExtResource( 2 )
-modulate = Color( 0.808685, 0, 0.855469, 1 )
-
-[node name="Sprite3" type="Sprite" parent="."]
-
-transform/pos = Vector2( 20.2756, 62.3808 )
-transform/scale = Vector2( 0.381903, 0.381903 )
-texture = ExtResource( 2 )
-modulate = Color( 0.808685, 0, 0.855469, 1 )
-
-[node name="Sprite4" type="Sprite" parent="."]
-
-transform/pos = Vector2( -43.9903, 45.7603 )
-transform/scale = Vector2( 0.381903, 0.381903 )
-texture = ExtResource( 2 )
-modulate = Color( 0.808685, 0, 0.855469, 1 )
 
 [node name="Label" type="Label" parent="."]
 
@@ -78,6 +43,21 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Fish_0" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -39.9995, -39.9995 )
+transform/scale = Vector2( 0.375008, 0.375008 )
+
+[node name="Fish_1" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -0.903278, 58.5556 )
+transform/scale = Vector2( 0.375008, 0.375008 )
+
+[node name="Fish_2" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 55.2976, -38.3705 )
+transform/scale = Vector2( 0.375008, 0.375008 )
 
 [connection signal="input_event" from="." to="." method="_on_Beach_input_event"]
 

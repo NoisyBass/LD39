@@ -1,5 +1,6 @@
 extends Sprite
 
+
 var regen_days
 var regen_accum
 var regenerating
@@ -11,7 +12,7 @@ func _ready():
 func set_regen_days(days):
 	regen_days = days
 	
-func cut():
+func kill():
 	regenerating = true
 	hide()
 	regen_accum = 0
@@ -22,8 +23,7 @@ func day_finished():
 		if (regen_accum == regen_days):
 			regenerating = false
 			show()
-			get_parent().regenerate_tree()
+			get_parent().regenerate_food()
 			
 func is_regenerating():
 	return regenerating
-	
