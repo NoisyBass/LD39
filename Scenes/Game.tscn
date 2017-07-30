@@ -107,5 +107,7 @@ max_lines_visible = -1
 [node name="FireManager" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 144.705, 305.99 )
+night_anims = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
+night_timeouts = [ 60, 40, 30, 15 ]
 
 

@@ -160,8 +160,8 @@ extents = Vector2( 16.5304, 34.3147 )
 
 script/script = ExtResource( 1 )
 day_fire = ExtResource( 2 )
-night_fire_anims = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
-night_fire_timeouts = [ 60, 40, 30, 15 ]
+night_anims = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
+night_timeouts = [ 60, 40, 30, 15 ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
