@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Forest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=6]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 length = 2.0
 loop = false
@@ -46,6 +47,10 @@ transform/pos = Vector2( 100.992, 99.4844 )
 [node name="Beach" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 539.83, 379.178 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 325.686, 335.707 )
 
 [node name="Food" type="Label" parent="."]
 
@@ -96,7 +101,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="FireManager" parent="." instance=ExtResource( 4 )]
+[node name="FireManager" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 144.705, 305.99 )
 
@@ -104,7 +109,7 @@ transform/pos = Vector2( 144.705, 305.99 )
 
 visibility/visible = false
 transform/scale = Vector2( 64, 48 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 modulate = Color( 0.529412, 0, 1, 0.469961 )
 
@@ -112,7 +117,7 @@ modulate = Color( 0.529412, 0, 1, 0.469961 )
 
 editor/display_folded = true
 transform/scale = Vector2( 63.9367, 47.9252 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 modulate = Color( 0, 0, 0, 0 )
 
@@ -121,7 +126,7 @@ modulate = Color( 0, 0, 0, 0 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/Fade = SubResource( 2 )
+anims/Fade = SubResource( 1 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

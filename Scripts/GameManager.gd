@@ -7,7 +7,9 @@ export var night_duration = 5.0
 var night_accum
 
 var wood = 0 setget set_wood, get_wood
-var food = 0
+var food = 0 setget set_food, get_food
+var fear
+var hunger
 
 func _ready():
 	state = game_state.DAY
@@ -66,15 +68,23 @@ func set_night():
 
 func update_values():
 	get_node("Wood").set_text("Wood: " + str(wood))
-	get_node("Food").set_text("Food: " +  str(food))
+	get_node("Food").set_text("Food: " + str(food))
 
-# Food get/set
+# Wood get/set
 func set_wood(value):
 	wood = value
 	get_node("Wood").set_text("Wood: " + str(wood))
 
 func get_wood():
 	return wood
+	
+# Wood get/set
+func set_food(value):
+	food = value
+	get_node("Food").set_text("Food: " + str(food))
+
+func get_food():
+	return food
 	
 func is_day():
 	return state == game_state.DAY
