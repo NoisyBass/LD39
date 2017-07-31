@@ -13,4 +13,4 @@ func _ready():
 func _on_Area2D_input_event( viewport, event, shape_idx ):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed and
 	    get_parent().food):
-			get_parent().food -= 1
+			get_parent().dec_food()

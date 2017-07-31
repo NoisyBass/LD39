@@ -7,14 +7,25 @@ export var night_duration = 5.0
 var night_accum
 
 var wood = 0 setget set_wood, get_wood
+onready var wood_label = get_node("Wood")
 var food = 0 setget set_food, get_food
-var fear
-var hunger
+onready var food_label = get_node("Food")
+
+var sanity = 100 setget set_sanity, get_sanity
+export var sanity_factor = 5
+export var sanity_inc = 10
+onready var sanity_bar = get_node("Sanity")
+
+var hunger = 100 setget set_hunger, get_hunger
+export var hunger_factor = 5
+export var hunger_inc = 10
+onready var hunger_bar = get_node("Hunger")
 
 func _ready():
 	state = game_state.DAY
 	night_accum = 0
-	update_values()
+	wood_label.set_text("Wood: " + str(wood))
+	food_label.set_text("Food: " + str(wood))
 	set_process(true)
 
 func _process(delta):
@@ -22,31 +33,37 @@ func _process(delta):
 		night_accum += delta
 		if (night_accum >= night_duration):
 			set_day()
+		else:
+			set_hunger(hunger - delta * hunger_factor)
 
 func add_wood():
 	if (state == game_state.DAY):
 		set_night()
-		wood += 1
-		update_values()
+		set_wood(wood + 1)
 
 func add_food():
 	if (state == game_state.DAY):
 		set_night()
-		food += 1
-		update_values()
+		set_food(food + 1)
+		
+func dec_food():
+	if (state == game_state.NIGHT):
+		set_food(food - 1)
+		set_hunger(hunger + hunger_inc)
 
 func set_day():
-	print("DAY")
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
-	"""
+
 	var timer = get_node("Timer")
 	var fade_half_len = animator.get_current_animation_length() / 2
 	timer.set_wait_time(fade_half_len)
-	timer.connect("timeout", get_node("DayCycleTint"), "hide", [],
+	timer.connect("timeout", sanity_bar, "hide", [],
+	              CONNECT_ONESHOT)
+	timer.connect("timeout", hunger_bar, "hide", [],
 	              CONNECT_ONESHOT)
 	timer.start()
-	"""
+
 	get_node("Forest").day_finished()
 	get_node("Beach").day_finished()
 	get_node("FireManager").day_comes()
@@ -54,41 +71,55 @@ func set_day():
 	get_node("TIME").set_text("DAY")
 
 func set_night():
-	print("NIGHT")
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
 	get_node("FireManager").night_comes()
 	night_accum = 0
+	sanity = 100
+	hunger = 100
 	state = game_state.NIGHT
 	get_node("TIME").set_text("NIGHT")
-	"""
+
 	var timer = get_node("Timer")
 	var fade_half_len = animator.get_current_animation_length() / 2
 	timer.set_wait_time(fade_half_len)
-	timer.connect("timeout", get_node("DayCycleTint"), "show", [],
+	timer.connect("timeout", sanity_bar, "show", [],
+	              CONNECT_ONESHOT)
+	timer.connect("timeout", hunger_bar, "show", [],
 	              CONNECT_ONESHOT)
 	timer.start()
-	"""
-
-func update_values():
-	get_node("Wood").set_text("Wood: " + str(wood))
-	get_node("Food").set_text("Food: " + str(food))
 
 # Wood get/set
 func set_wood(value):
 	wood = value
-	get_node("Wood").set_text("Wood: " + str(wood))
+	wood_label.set_text("Wood: " + str(wood))
 
 func get_wood():
 	return wood
 	
-# Wood get/set
+# Food get/set
 func set_food(value):
 	food = value
-	get_node("Food").set_text("Food: " + str(food))
+	food_label.set_text("Food: " + str(food))
 
 func get_food():
 	return food
+	
+# Sanity get/set
+func set_sanity(value):
+	sanity = value
+	sanity_bar.set_value(sanity)
+
+func get_sanity():
+	return sanity
+	
+# Hunger get/set
+func set_hunger(value):
+	hunger = value
+	hunger_bar.set_value(hunger)
+
+func get_hunger():
+	return hunger
 	
 func is_day():
 	return state == game_state.DAY
