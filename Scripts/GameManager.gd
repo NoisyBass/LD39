@@ -35,6 +35,7 @@ func _ready():
 	get_node("Beach/SamplePlayer").play("Beach")
 	set_process(true)
 	get_node("SamplePlayer").play("Jungle")
+	get_node("Player/PlayerAnim").play("player_idle")
 
 func _process(delta):
 	if (state == game_state.NIGHT):
