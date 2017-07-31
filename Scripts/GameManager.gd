@@ -5,6 +5,8 @@ var state
 
 export var night_duration = 5.0
 var night_accum
+export var nights_to_win = 3
+var current_nights
 
 var wood = 0 setget set_wood, get_wood
 onready var wood_label = get_node("Wood")
@@ -25,6 +27,7 @@ onready var hunger_bar = get_node("Hunger")
 func _ready():
 	state = game_state.DAY
 	night_accum = 0
+	current_nights = 0
 	wood_label.set_text("Wood: " + str(wood))
 	food_label.set_text("Food: " + str(wood))
 	set_process(true)
@@ -33,6 +36,9 @@ func _process(delta):
 	if (state == game_state.NIGHT):
 		night_accum += delta
 		if (night_accum >= night_duration):
+			current_nights += 1
+			if (current_nights == nights_to_win):
+				get_node("/root/Global").goto_scene("res://Scenes/YouWin.tscn")
 			set_day()
 		else:
 			set_hunger(hunger - delta * hunger_dec_time)
@@ -113,6 +119,9 @@ func get_food():
 func set_sanity(value):
 	sanity = value
 	sanity_bar.set_value(sanity)
+	
+	if (sanity < 0):
+		get_node("/root/Global").goto_scene("res://Scenes/GameOver.tscn")
 
 func get_sanity():
 	return sanity
@@ -121,6 +130,9 @@ func get_sanity():
 func set_hunger(value):
 	hunger = value
 	hunger_bar.set_value(hunger)
+	
+	if (hunger < 0):
+		get_node("/root/Global").goto_scene("res://Scenes/GameOver.tscn")
 
 func get_hunger():
 	return hunger
