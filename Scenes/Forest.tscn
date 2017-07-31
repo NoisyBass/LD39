@@ -30,18 +30,15 @@ _update_shape_index = 0
 
 [node name="Tree_0" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -39.521, -40.1845 )
-transform/scale = Vector2( 0.372118, 0.372118 )
+transform/pos = Vector2( -44.6848, -8.40738 )
 
 [node name="Tree_1" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 0.947598, 52.6944 )
-transform/scale = Vector2( 0.372118, 0.372118 )
+transform/pos = Vector2( 48.2161, -39.8565 )
 
 [node name="Tree_2" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 48.7138, -38.1942 )
-transform/scale = Vector2( 0.372118, 0.372118 )
+transform/pos = Vector2( 22.1005, 43.2347 )
 
 [connection signal="input_event" from="." to="." method="_on_Forest_input_event"]
 
