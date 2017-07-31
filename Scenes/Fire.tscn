@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Scripts/FireManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/CampFire.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Light.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -184,11 +185,34 @@ hframes = 5
 modulate = Color( 0, 0.00317383, 0.203125, 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
+[node name="Light2D" type="Light2D" parent="."]
+
+transform/scale = Vector2( 0.26431, 0.258032 )
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.2026, 0.0498962, 0.425781, 1 )
+energy = 5.0
+mode = 3
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.716972, -0.71697 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -197,7 +221,6 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-transform/pos = Vector2( 0.716972, -0.71697 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0

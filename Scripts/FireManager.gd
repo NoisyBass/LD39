@@ -27,10 +27,14 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 
 func night_comes():
 	self.animator.play(night_anims[0])
+	var light = get_node("Light2D")
+	light.set_scale(Vector2(1, 1))
+	light.show()
 
 func day_comes():
 	self.animator.stop()
 	self.fire_sprite.set_texture(self.day_fire)
+	get_node("Light2D").hide()
 
 func kindle():
 	var idx = night_anims.find(animator.get_current_animation())
