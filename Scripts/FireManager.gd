@@ -37,6 +37,9 @@ func day_comes():
 	fire_sprite.set_texture(day_fire)
 	light.hide()
 
+func get_fire_level():
+	return night_anims.find(animator.get_current_animation())
+
 func kindle():
 	var idx = night_anims.find(animator.get_current_animation())
 	if idx + 1 < night_anims.size():
