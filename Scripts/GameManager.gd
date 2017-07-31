@@ -79,6 +79,8 @@ func set_day():
 	              [], CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("Beach"), "day_finished",
 	              [], CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Eyes"), "hide",
+	              [], CONNECT_ONESHOT)
 	
 	timer.start()
 	get_node("StreamPlayer").stop()
@@ -99,6 +101,9 @@ func set_night():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("FireManager"), "night_comes",
 	              [], CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Eyes"), "show",
+	              [], CONNECT_ONESHOT)
+	
 	get_node("StreamPlayer").play(song_pos)
 	timer.start()
 

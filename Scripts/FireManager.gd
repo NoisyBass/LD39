@@ -22,6 +22,10 @@ func _process(delta):
 	since_last_kindle += delta
 	unkindle()
 
+	var f = 0.01*sin(OS.get_ticks_msec()*5)
+	var scale = light.get_scale()
+	light.set_scale(Vector2(scale.x + f, scale.y + f))
+
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed and
 	    get_parent().wood and
