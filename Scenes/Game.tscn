@@ -30,8 +30,8 @@ tracks/0/keys = {
 
 script/script = ExtResource( 1 )
 night_duration = 10.0
-sanity_mul = [  ]
-sanity_inc_dec = 10
+sanity_mul = [ -2, -1, 0, 1 ]
+sanity_inc_dec = 1
 hunger_dec_time = 5
 hunger_dec_kindle = 10
 hunger_inc_eat = 10

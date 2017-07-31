@@ -36,6 +36,8 @@ func _process(delta):
 			set_day()
 		else:
 			set_hunger(hunger - delta * hunger_dec_time)
+			var fire_level = get_node("FireManager").get_fire_level()
+			set_sanity(sanity + delta * sanity_inc_dec*sanity_mul[fire_level])
 
 func add_wood():
 	if (state == game_state.DAY):
