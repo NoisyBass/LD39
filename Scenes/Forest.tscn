@@ -40,15 +40,15 @@ _update_shape_index = 0
 
 [node name="Tree_0" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -45.8764, 1.9202 )
+transform/pos = Vector2( -46.6708, 11.8506 )
 
 [node name="Tree_1" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 47.0244, -29.5289 )
+transform/pos = Vector2( 46.23, -19.5985 )
 
 [node name="Tree_2" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 20.9088, 53.5623 )
+transform/pos = Vector2( 20.1144, 63.4926 )
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 

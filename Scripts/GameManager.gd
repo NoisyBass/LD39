@@ -66,8 +66,7 @@ func set_day():
 	print('SET DAY')
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
-	get_node("Forest").day_finished()
-	get_node("Beach").day_finished()
+
 	var timer = get_node("Timer")
 	timer.set_wait_time(animator.get_current_animation_length() / 2)
 	timer.connect("timeout", sanity_bar, "hide", [],
@@ -76,6 +75,11 @@ func set_day():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("FireManager"), "day_comes",
 	              [], CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Forest"), "day_finished",
+	              [], CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Beach"), "day_finished",
+	              [], CONNECT_ONESHOT)
+	
 	timer.start()
 	get_node("StreamPlayer").stop()
 	song_pos = get_node("StreamPlayer").get_pos()
