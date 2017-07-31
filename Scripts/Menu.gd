@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	pass
+	get_node("Sprite/AnimationPlayer").play("menu_fire")
 
 
 func _on_PlayButton_pressed():

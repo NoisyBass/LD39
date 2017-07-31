@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Font/font48.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://Assets/Graphics/fire_4.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Font/font48.fnt" type="BitmapFont" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "menu_fire"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.3, 0.7, 1 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [node name="Menu" type="Node2D"]
 
@@ -15,16 +33,34 @@ texture = ExtResource( 2 )
 centered = false
 modulate = Color( 0.145098, 0.145098, 0.164706, 1 )
 
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 202.487, 255.653 )
+transform/scale = Vector2( 3.05617, 2.29213 )
+texture = ExtResource( 3 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/menu_fire = SubResource( 1 )
+playback/active = true
+playback/speed = 1.2
+blend_times = [  ]
+autoplay = ""
+
 [node name="PlayButton" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 270.0
-margin/top = 190.0
-margin/right = 418.0
-margin/bottom = 248.0
+margin/left = 331.0
+margin/top = 178.0
+margin/right = 479.0
+margin/bottom = 236.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -45,7 +81,7 @@ margin/left = 69.0
 margin/top = 37.0
 margin/right = -42.0
 margin/bottom = -11.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -62,10 +98,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 273.0
-margin/top = 276.0
-margin/right = 373.0
-margin/bottom = 376.0
+margin/left = 334.0
+margin/top = 264.0
+margin/right = 434.0
+margin/bottom = 364.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -86,7 +122,7 @@ margin/left = 73.0
 margin/top = 46.0
 margin/right = -83.0
 margin/bottom = -2.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
