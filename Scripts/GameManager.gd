@@ -63,12 +63,11 @@ func dec_food():
 		set_food(food - 1)
 
 func set_day():
+	print('SET DAY')
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
 	get_node("Forest").day_finished()
 	get_node("Beach").day_finished()
-
-	get_node("TIME").set_text("DAY")
 	var timer = get_node("Timer")
 	timer.set_wait_time(animator.get_current_animation_length() / 2)
 	timer.connect("timeout", sanity_bar, "hide", [],
@@ -80,6 +79,7 @@ func set_day():
 	timer.start()
 	get_node("StreamPlayer").stop()
 	song_pos = get_node("StreamPlayer").get_pos()
+	state = game_state.DAY
 
 func set_night():
 	var animator = get_node("Fade/AnimationPlayer")
