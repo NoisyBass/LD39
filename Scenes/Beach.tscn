@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/Beach.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Fish_0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Audio/Beach.smp" type="Sample" id=3]
+[ext_resource path="res://Assets/Audio/Splash.smp" type="Sample" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,10 +13,16 @@ extents = Vector2( 100, 100 )
 [sub_resource type="SampleLibrary" id=2]
 
 samples/Beach = {
-"db": -15.0,
+"db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 3 )
+}
+samples/Splash = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
 }
 
 [node name="Beach" type="Area2D"]
@@ -51,7 +58,7 @@ transform/pos = Vector2( 55.2976, -38.3705 )
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
-config/polyphony = 1
+config/polyphony = 2
 config/samples = SubResource( 2 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0

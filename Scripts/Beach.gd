@@ -19,13 +19,14 @@ func _on_Beach_input_event( viewport, event, shape_idx ):
 			get_parent().add_food()
 			fishes[food-1].kill()
 			add_food(-1)
-			
+			get_node("SamplePlayer").play("Splash")
+	
 func regenerate_food():
 	add_food(1)
-	
+
 func add_food(amount):
 	food += amount
-	
+
 func day_finished():
 	for fish in fishes:
 		if (fish.is_regenerating()):
