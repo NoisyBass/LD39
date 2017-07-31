@@ -12,9 +12,6 @@ func _ready():
 		
 	for fish in fishes:
 		fish.set_regen_days(regen_days)
-		
-	get_node("Label").set_text(str(food))
-	pass
 
 func _on_Beach_input_event( viewport, event, shape_idx ):
 	if (get_parent().is_day() and food > 0):
@@ -28,7 +25,6 @@ func regenerate_food():
 	
 func add_food(amount):
 	food += amount
-	get_node("Label").set_text(str(food))
 	
 func day_finished():
 	for fish in fishes:

@@ -28,8 +28,8 @@ func _ready():
 	state = game_state.DAY
 	night_accum = 0
 	current_nights = 0
-	wood_label.set_text("Wood: " + str(wood))
-	food_label.set_text("Food: " + str(wood))
+	wood_label.set_text(str(wood))
+	food_label.set_text(str(wood))
 	set_process(true)
 
 func _process(delta):
@@ -100,7 +100,7 @@ func set_wood(value):
 	if (value < wood):
 		set_hunger(hunger - hunger_dec_kindle)
 	wood = value
-	wood_label.set_text("Wood: " + str(wood))
+	wood_label.set_text(str(wood))
 
 func get_wood():
 	return wood
@@ -110,7 +110,7 @@ func set_food(value):
 	if (value < food):
 		set_hunger(hunger + hunger_inc_eat)
 	food = value
-	food_label.set_text("Food: " + str(food))
+	food_label.set_text(str(food))
 
 func get_food():
 	return food

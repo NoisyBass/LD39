@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Graphics/Fish.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Fish.gd" type="Script" id=2]
 
 [node name="Fish_0" type="Sprite"]
 
 texture = ExtResource( 1 )
-modulate = Color( 1, 0.171875, 0.948242, 1 )
 script/script = ExtResource( 2 )
 
 

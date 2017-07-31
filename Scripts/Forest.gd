@@ -12,9 +12,6 @@ func _ready():
 		
 	for tree in trees:
 		tree.set_regen_days(regen_days)
-		
-	get_node("Label").set_text(str(wood))
-	pass
 
 func _on_Forest_input_event( viewport, event, shape_idx ):
 	if (get_parent().is_day() and wood > 0):
@@ -28,7 +25,6 @@ func regenerate_tree():
 	
 func add_wood(amount):
 	wood += amount
-	get_node("Label").set_text(str(wood))
 	
 func day_finished():
 	for tree in trees:

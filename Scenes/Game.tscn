@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Graphics/under_bar.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Graphics/progress_bar_4.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Graphics/progress_bar.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Fish.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Stick.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/under_bar.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/progress_bar_4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/progress_bar.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -98,20 +100,26 @@ autoplay = ""
 
 [node name="Food" type="Label" parent="."]
 
+editor/display_folded = true
 visibility/blend_mode = 4
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 214.0
+margin/left = 250.0
 margin/top = 16.0
 margin/right = 278.0
 margin/bottom = 30.0
-text = "Food: "
+text = "0"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="Food"]
+
+transform/pos = Vector2( -11.0678, 5.53392 )
+texture = ExtResource( 7 )
 
 [node name="Wood" type="Label" parent="."]
 
@@ -120,15 +128,20 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 321.0
+margin/left = 348.0
 margin/top = 16.0
 margin/right = 385.0
 margin/bottom = 30.0
-text = "Wood: "
+text = "0"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="Wood"]
+
+transform/pos = Vector2( -6.32449, 5.00688 )
+texture = ExtResource( 8 )
 
 [node name="Hunger" type="TextureProgress" parent="."]
 
@@ -150,9 +163,9 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-texture/under = ExtResource( 7 )
+texture/under = ExtResource( 9 )
 texture/over = null
-texture/progress = ExtResource( 8 )
+texture/progress = ExtResource( 10 )
 radial_fill/fill_degrees = 360.0
 radial_fill/center_offset = Vector2( 0, 0 )
 
@@ -193,9 +206,9 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-texture/under = ExtResource( 7 )
+texture/under = ExtResource( 9 )
 texture/over = null
-texture/progress = ExtResource( 9 )
+texture/progress = ExtResource( 11 )
 radial_fill/fill_degrees = 360.0
 radial_fill/center_offset = Vector2( 0, 0 )
 
