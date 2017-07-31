@@ -34,6 +34,7 @@ func _ready():
 	food_label.set_text(str(wood))
 	get_node("Beach/SamplePlayer").play("Beach")
 	set_process(true)
+	get_node("SamplePlayer").play("Jungle")
 
 func _process(delta):
 	if (state == game_state.NIGHT):
@@ -81,7 +82,8 @@ func set_day():
 	              [], CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("Eyes"), "hide",
 	              [], CONNECT_ONESHOT)
-	
+	timer.connect("timeout", get_node("SamplePlayer"), "play", ["Jungle"],
+	              CONNECT_ONESHOT)
 	timer.start()
 	get_node("StreamPlayer").stop()
 	song_pos = get_node("StreamPlayer").get_pos()
@@ -99,11 +101,12 @@ func set_night():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", hunger_bar, "show", [],
 	              CONNECT_ONESHOT)
-	timer.connect("timeout", get_node("FireManager"), "night_comes",
-	              [], CONNECT_ONESHOT)
-	timer.connect("timeout", get_node("Eyes"), "show",
-	              [], CONNECT_ONESHOT)
-	
+	timer.connect("timeout", get_node("FireManager"), "night_comes", [],
+	              CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Eyes"), "show", [],
+	              CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Beach/SamplePlayer"), "stop_all", [],
+	              CONNECT_ONESHOT)
 	get_node("StreamPlayer").play(song_pos)
 	timer.start()
 
