@@ -5,19 +5,14 @@
 [ext_resource path="res://Assets/Graphics/CampFire.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/Light3.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Audio/Fireplace.smp" type="Sample" id=5]
+[ext_resource path="res://Assets/Audio/Kindle.smp" type="Sample" id=6]
 
-[sub_resource type="OccluderPolygon2D" id=1]
-
-closed = true
-cull_mode = 0
-polygon = Vector2Array( 0.622715, -11.7883, 16.7546, 0.758686, 17.1131, 22.6263, 0.264225, 33.3809, -17.6601, 19.7584, -16.5846, -0.675259 )
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.5304, 34.3147 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 length = 0.4
 loop = true
@@ -53,7 +48,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 0.4
 loop = true
@@ -89,7 +84,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 length = 0.4
 loop = true
@@ -125,7 +120,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 length = 0.4
 loop = true
@@ -161,13 +156,19 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="SampleLibrary" id=7]
+[sub_resource type="SampleLibrary" id=6]
 
 samples/Fireplace = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 5 )
+}
+samples/Kindle = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
 }
 
 [node name="FireManager" type="Node2D"]
@@ -184,12 +185,6 @@ hframes = 5
 modulate = Color( 0.897369, 1, 0.308594, 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-
-visibility/visible = false
-occluder = SubResource( 1 )
-light_mask = 1
-
 [node name="Light2D" type="Light2D" parent="."]
 
 visibility/visible = false
@@ -198,7 +193,7 @@ editor_only = false
 texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
 scale = 1.0
-color = Color( 1, 1, 1, 1 )
+color = Color( 1, 0.782288, 0.320312, 1 )
 energy = 1.0
 mode = 3
 range/height = 0.0
@@ -216,7 +211,7 @@ shadow/item_mask = 1
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -226,7 +221,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -235,10 +230,10 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-"anims/High Fire" = SubResource( 3 )
-"anims/Low Fire" = SubResource( 4 )
-"anims/Max Fire" = SubResource( 5 )
-"anims/Medium Fire" = SubResource( 6 )
+"anims/High Fire" = SubResource( 2 )
+"anims/Low Fire" = SubResource( 3 )
+"anims/Max Fire" = SubResource( 4 )
+"anims/Medium Fire" = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -251,8 +246,8 @@ params/pitch_scale = 1.0
 params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = SubResource( 7 )
+config/polyphony = 2
+config/samples = SubResource( 6 )
 config/pitch_random = 0.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

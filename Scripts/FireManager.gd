@@ -52,6 +52,7 @@ func kindle():
 	else:
 		print("Fire at max")
 	since_last_kindle = 0
+	player.play("Kindle")
 	player.voice_set_volume_scale_db(fire_voice, 5)
 
 func unkindle():
@@ -59,3 +60,4 @@ func unkindle():
 	if idx > 0 and since_last_kindle >= night_timeouts[idx]:
 		animator.play(night_anims[idx - 1])
 		light.scale(Vector2(0.8, 0.8))
+		player.voice_set_volume_scale_db(fire_voice, -5)
