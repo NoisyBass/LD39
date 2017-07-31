@@ -32,7 +32,7 @@ transform/pos = Vector2( 0.902527, 0.175751 )
 transform/scale = Vector2( 64, 48 )
 texture = ExtResource( 2 )
 centered = false
-modulate = Color( 0.145098, 0.145098, 0.164706, 1 )
+modulate = Color( 0.886275, 0.839216, 0.709804, 1 )
 
 [node name="Sprite 2" type="Sprite" parent="."]
 
@@ -64,6 +64,9 @@ margin/top = 53.0
 margin/right = 577.0
 margin/bottom = 73.0
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "Alvaro Bermejo @nosoybermejo - Programming, Audio"
 percent_visible = 1.0
 lines_skipped = 0
@@ -80,6 +83,9 @@ margin/top = 103.0
 margin/right = 561.0
 margin/bottom = 146.0
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "Laura de Castro @noisybass - Programming, Art
 "
 percent_visible = 1.0

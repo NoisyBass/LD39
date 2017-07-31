@@ -375,7 +375,7 @@ default/chorus_send = 0.0
 [node name="Tween" type="Tween" parent="."]
 
 playback/process_mode = 1
-playback/active = true
+playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
