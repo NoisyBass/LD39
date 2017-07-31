@@ -37,6 +37,8 @@ func night_comes():
 
 func day_comes():
 	animator.stop()
+	fire_sprite.set_hframes(1)
+	fire_sprite.set_frame(0)
 	fire_sprite.set_texture(day_fire)
 	light.hide()
 	player.stop_all()
