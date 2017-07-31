@@ -371,4 +371,11 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
+[node name="Tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = true
+playback/repeat = false
+playback/speed = 1.0
+
 

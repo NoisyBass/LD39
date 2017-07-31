@@ -85,10 +85,19 @@ func set_day():
 	              [], CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("SamplePlayer"), "play", ["Jungle"],
 	              CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("StreamPlayer"), "stop", [],
+	              CONNECT_ONESHOT)
 	timer.start()
-	get_node("StreamPlayer").stop()
+	var tween = get_node("Tween")
+	tween.interpolate_method(get_node("StreamPlayer"), "set_volume", 1, 0,
+	                         animator.get_current_animation_length(),
+	                         0, 2)
+	tween.start()
 	song_pos = get_node("StreamPlayer").get_pos()
 	state = game_state.DAY
+
+func dumb(x):
+	print(x)
 
 func set_night():
 	var animator = get_node("Fade/AnimationPlayer")
@@ -106,9 +115,15 @@ func set_night():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("Eyes"), "show", [],
 	              CONNECT_ONESHOT)
-	timer.connect("timeout", get_node("Beach/SamplePlayer"), "stop_all", [],
+	timer.connect("timeout", get_node("SamplePlayer"), "stop_all", [],
 	              CONNECT_ONESHOT)
+	get_node("StreamPlayer").set_volume(0)
 	get_node("StreamPlayer").play(song_pos)
+	var tween = get_node("Tween")
+	tween.interpolate_method(get_node("StreamPlayer"), "set_volume", 0, 1,
+	                         animator.get_current_animation_length(),
+	                         0, 2)
+	tween.start()
 	timer.start()
 
 # Wood get/set
