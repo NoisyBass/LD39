@@ -50,7 +50,6 @@ func add_food():
 func dec_food():
 	if (state == game_state.NIGHT):
 		set_food(food - 1)
-		set_hunger(hunger + hunger_inc_eat)
 
 func set_day():
 	var animator = get_node("Fade/AnimationPlayer")
@@ -90,6 +89,8 @@ func set_night():
 
 # Wood get/set
 func set_wood(value):
+	if (value < wood):
+		set_hunger(hunger - hunger_dec_kindle)
 	wood = value
 	wood_label.set_text("Wood: " + str(wood))
 
@@ -98,6 +99,8 @@ func get_wood():
 	
 # Food get/set
 func set_food(value):
+	if (value < food):
+		set_hunger(hunger + hunger_inc_eat)
 	food = value
 	food_label.set_text("Food: " + str(food))
 
