@@ -12,13 +12,14 @@ var food = 0 setget set_food, get_food
 onready var food_label = get_node("Food")
 
 var sanity = 100 setget set_sanity, get_sanity
-export var sanity_factor = 5
-export var sanity_inc = 10
+export var sanity_mul = [-2, -1, 0, 1]
+export var sanity_inc_dec = 10
 onready var sanity_bar = get_node("Sanity")
 
 var hunger = 100 setget set_hunger, get_hunger
-export var hunger_factor = 5
-export var hunger_inc = 10
+export var hunger_dec_time = 5
+export var hunger_dec_kindle = 10
+export var hunger_inc_eat = 10
 onready var hunger_bar = get_node("Hunger")
 
 func _ready():
@@ -34,7 +35,7 @@ func _process(delta):
 		if (night_accum >= night_duration):
 			set_day()
 		else:
-			set_hunger(hunger - delta * hunger_factor)
+			set_hunger(hunger - delta * hunger_dec_time)
 
 func add_wood():
 	if (state == game_state.DAY):
@@ -49,7 +50,7 @@ func add_food():
 func dec_food():
 	if (state == game_state.NIGHT):
 		set_food(food - 1)
-		set_hunger(hunger + hunger_inc)
+		set_hunger(hunger + hunger_inc_eat)
 
 func set_day():
 	var animator = get_node("Fade/AnimationPlayer")

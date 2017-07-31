@@ -30,10 +30,11 @@ tracks/0/keys = {
 
 script/script = ExtResource( 1 )
 night_duration = 10.0
-sanity_factor = 5
-sanity_inc = 10
-hunger_factor = 5
-hunger_inc = 10
+sanity_mul = [  ]
+sanity_inc_dec = 10
+hunger_dec_time = 5
+hunger_dec_kindle = 10
+hunger_inc_eat = 10
 
 [node name="Background" type="Sprite" parent="."]
 
@@ -96,6 +97,7 @@ autoplay = ""
 
 [node name="Food" type="Label" parent="."]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -112,6 +114,7 @@ max_lines_visible = -1
 
 [node name="Wood" type="Label" parent="."]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -128,6 +131,7 @@ max_lines_visible = -1
 
 [node name="Hunger" type="TextureProgress" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 visibility/blend_mode = 4
 focus/ignore_mouse = false
@@ -170,6 +174,7 @@ max_lines_visible = -1
 
 [node name="Sanity" type="TextureProgress" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 visibility/blend_mode = 4
 focus/ignore_mouse = false
