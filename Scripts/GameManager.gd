@@ -117,7 +117,7 @@ func set_food(value):
 
 func get_food():
 	return food
-	
+
 # Sanity get/set
 func set_sanity(value):
 	sanity = value

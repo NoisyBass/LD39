@@ -25,7 +25,8 @@ func _process(delta):
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed and
 	    get_parent().wood and
-	    animator.get_current_animation() != night_anims[-1]):
+	    animator.get_current_animation() != night_anims[-1] and
+		not get_parent().is_day()):
 			get_parent().wood -= 1
 			kindle()
 
@@ -51,11 +52,11 @@ func kindle():
 	if idx + 1 < night_anims.size():
 		animator.play(night_anims[idx + 1])
 		light.scale(Vector2(1.2, 1.2))
+		since_last_kindle = 0
+		player.play("Kindle")
+		player.voice_set_volume_scale_db(fire_voice, 5)
 	else:
 		print("Fire at max")
-	since_last_kindle = 0
-	player.play("Kindle")
-	player.voice_set_volume_scale_db(fire_voice, 5)
 
 func unkindle():
 	var idx = night_anims.find(animator.get_current_animation())
