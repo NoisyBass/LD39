@@ -65,7 +65,7 @@ func set_day():
 	animator.play("Fade")
 	get_node("Forest").day_finished()
 	get_node("Beach").day_finished()
-	state = game_state.DAY
+
 	get_node("TIME").set_text("DAY")
 	var timer = get_node("Timer")
 	timer.set_wait_time(animator.get_current_animation_length() / 2)
@@ -82,7 +82,7 @@ func set_night():
 	animator.play("Fade")
 	night_accum = 0
 	state = game_state.NIGHT
-	get_node("TIME").set_text("NIGHT")
+
 	var timer = get_node("Timer")
 	timer.set_wait_time(animator.get_current_animation_length() / 2)
 	timer.connect("timeout", sanity_bar, "show", [],
