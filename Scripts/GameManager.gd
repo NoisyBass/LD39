@@ -30,6 +30,7 @@ func _ready():
 	current_nights = 0
 	wood_label.set_text(str(wood))
 	food_label.set_text(str(wood))
+	get_node("Beach/SamplePlayer").play("Beach")
 	set_process(true)
 
 func _process(delta):

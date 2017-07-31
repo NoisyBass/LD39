@@ -12,7 +12,7 @@ extents = Vector2( 100, 100 )
 [sub_resource type="SampleLibrary" id=2]
 
 samples/Beach = {
-"db": -30.0,
+"db": -15.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 3 )
