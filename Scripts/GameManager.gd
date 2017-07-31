@@ -75,8 +75,6 @@ func set_night():
 	animator.play("Fade")
 	get_node("FireManager").night_comes()
 	night_accum = 0
-	sanity = 100
-	hunger = 100
 	state = game_state.NIGHT
 	get_node("TIME").set_text("NIGHT")
 

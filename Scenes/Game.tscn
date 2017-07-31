@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Graphics/under_bar.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/progress_bar_4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/progress_bar.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -107,17 +110,34 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Hunger" type="ProgressBar" parent="."]
+[node name="Wood" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 321.0
+margin/top = 16.0
+margin/right = 385.0
+margin/bottom = 30.0
+text = "Wood: "
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Hunger" type="TextureProgress" parent="."]
 
 visibility/visible = false
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 561.0
-margin/top = 200.0
-margin/right = 635.0
-margin/bottom = 216.0
+margin/left = 521.0
+margin/top = 199.0
+margin/right = 621.0
+margin/bottom = 215.0
 range/min = 0.0
 range/max = 100.0
 range/step = 1.0
@@ -125,10 +145,15 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-percent/visible = false
+texture/under = ExtResource( 7 )
+texture/over = null
+texture/progress = ExtResource( 8 )
+radial_fill/fill_degrees = 360.0
+radial_fill/center_offset = Vector2( 0, 0 )
 
 [node name="Label" type="Label" parent="Hunger"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -143,17 +168,18 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Sanity" type="ProgressBar" parent="."]
+[node name="Sanity" type="TextureProgress" parent="."]
 
 visibility/visible = false
+visibility/blend_mode = 4
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 561.0
-margin/top = 219.0
-margin/right = 635.0
-margin/bottom = 235.0
+margin/left = 521.0
+margin/top = 222.0
+margin/right = 621.0
+margin/bottom = 238.0
 range/min = 0.0
 range/max = 100.0
 range/step = 1.0
@@ -161,10 +187,15 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-percent/visible = false
+texture/under = ExtResource( 7 )
+texture/over = null
+texture/progress = ExtResource( 9 )
+radial_fill/fill_degrees = 360.0
+radial_fill/center_offset = Vector2( 0, 0 )
 
 [node name="Label" type="Label" parent="Sanity"]
 
+visibility/blend_mode = 4
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -174,22 +205,6 @@ margin/top = 1.0
 margin/right = 3.0
 margin/bottom = 15.0
 text = "Sanity:"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Wood" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 321.0
-margin/top = 16.0
-margin/right = 385.0
-margin/bottom = 30.0
-text = "Wood: "
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
