@@ -38,9 +38,9 @@ tracks/0/keys = {
 
 script/script = ExtResource( 1 )
 night_duration = 10.0
-nights_to_win = 3
+nights_to_win = 5
 sanity_mul = [ -4, -2, 0, 1 ]
-sanity_inc_dec = 1
+sanity_inc_dec = 0.5
 hunger_dec_time = 2
 hunger_dec_kindle = 10
 hunger_inc_eat = 10
@@ -71,6 +71,7 @@ transform/pos = Vector2( 325.686, 335.707 )
 [node name="FireManager" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 319.885, 239.914 )
+night_timeouts = [ 7, 5, 3, 2 ]
 
 [node name="Fade" type="Sprite" parent="."]
 
@@ -153,10 +154,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 250.0
-margin/top = 13.0
-margin/right = 278.0
-margin/bottom = 39.0
+margin/left = 268.0
+margin/top = 10.0
+margin/right = 296.0
+margin/bottom = 36.0
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -181,10 +182,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 347.0
-margin/top = 14.0
-margin/right = 384.0
-margin/bottom = 50.0
+margin/left = 365.0
+margin/top = 11.0
+margin/right = 402.0
+margin/bottom = 47.0
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2

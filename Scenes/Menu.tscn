@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Font/font48.fnt" type="BitmapFont" id=3]
 
 [node name="Menu" type="Node2D"]
 
@@ -12,19 +13,18 @@ script/script = ExtResource( 1 )
 transform/scale = Vector2( 64, 48 )
 texture = ExtResource( 2 )
 centered = false
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0.145098, 0.145098, 0.164706, 1 )
 
 [node name="PlayButton" type="TextureButton" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 270.0
 margin/top = 190.0
-margin/right = 370.0
-margin/bottom = 290.0
+margin/right = 418.0
+margin/bottom = 248.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -41,10 +41,14 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 46.0
-margin/top = 28.0
+margin/left = 69.0
+margin/top = 37.0
 margin/right = -42.0
-margin/bottom = -20.0
+margin/bottom = -11.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "PLAY!"
 align = 1
 valign = 1
@@ -52,6 +56,49 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="CreditsButton" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 273.0
+margin/top = 276.0
+margin/right = 373.0
+margin/bottom = 376.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Label" type="Label" parent="CreditsButton"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 73.0
+margin/top = 46.0
+margin/right = -83.0
+margin/bottom = -2.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "CREDITS"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+
+[connection signal="pressed" from="CreditsButton" to="." method="_on_CreditsButton_pressed"]
 
 

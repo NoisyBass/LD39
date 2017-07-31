@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/EndGame.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Font/font48.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://Assets/Graphics/game_over.png" type="Texture" id=4]
 
 [node name="GameOver" type="Node2D"]
 
@@ -12,7 +14,7 @@ script/script = ExtResource( 1 )
 transform/scale = Vector2( 64, 48 )
 texture = ExtResource( 2 )
 centered = false
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0.145098, 0.145098, 0.164706, 1 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
 
@@ -36,16 +38,25 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 259.0
-margin/top = 161.0
-margin/right = 405.0
-margin/bottom = 282.0
+margin/left = 225.0
+margin/top = 160.0
+margin/right = 432.0
+margin/bottom = 281.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "GAME OVER"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 332.001, 343.001 )
+texture = ExtResource( 4 )
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 

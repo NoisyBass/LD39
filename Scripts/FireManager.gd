@@ -22,7 +22,7 @@ func _process(delta):
 	since_last_kindle += delta
 	unkindle()
 
-	var f = 0.01*sin(OS.get_ticks_msec()*5)
+	var f = 0.005*sin(OS.get_ticks_msec()*5)
 	var scale = light.get_scale()
 	light.set_scale(Vector2(scale.x + f, scale.y + f))
 
@@ -36,7 +36,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 
 func night_comes():
 	animator.play(night_anims[0])
-	light.set_scale(Vector2(1, 1))
+	light.set_scale(Vector2(1.1, 1.1))
 	light.show()
 	fire_voice = player.play("Fireplace")
 

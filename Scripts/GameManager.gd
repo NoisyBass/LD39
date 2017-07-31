@@ -15,7 +15,7 @@ onready var food_label = get_node("Food")
 
 var sanity = 100 setget set_sanity, get_sanity
 export var sanity_mul = [-2, -1, 0, 1]
-export var sanity_inc_dec = 10
+export var sanity_inc_dec = 0.5
 onready var sanity_bar = get_node("Sanity")
 
 var hunger = 100 setget set_hunger, get_hunger
