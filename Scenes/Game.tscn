@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Forest.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Forest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -32,15 +32,22 @@ sanity_inc = 10
 hunger_factor = 5
 hunger_inc = 10
 
-[node name="Forest" parent="." instance=ExtResource( 2 )]
+[node name="Background" type="Sprite" parent="."]
+
+transform/scale = Vector2( 64, 48 )
+texture = ExtResource( 2 )
+centered = false
+modulate = Color( 1, 0.954346, 0.46875, 1 )
+
+[node name="Forest" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 100.992, 99.4844 )
 
-[node name="Beach" parent="." instance=ExtResource( 3 )]
+[node name="Beach" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 539.83, 379.178 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 325.686, 335.707 )
 
@@ -61,15 +68,15 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="FireManager" parent="." instance=ExtResource( 5 )]
+[node name="FireManager" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 144.705, 305.99 )
+transform/pos = Vector2( 319.885, 239.914 )
 
 [node name="Fade" type="Sprite" parent="."]
 
 editor/display_folded = true
 transform/scale = Vector2( 63.9367, 47.9252 )
-texture = ExtResource( 6 )
+texture = ExtResource( 2 )
 centered = false
 modulate = Color( 0, 0, 0, 0 )
 

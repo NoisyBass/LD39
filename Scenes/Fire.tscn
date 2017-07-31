@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/FireManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/CampFire.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/Light.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Light3.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -152,6 +152,12 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
+[sub_resource type="OccluderPolygon2D" id=6]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( 0.622715, -11.7883, 16.7546, 0.758686, 17.1131, 22.6263, 0.264225, 33.3809, -17.6601, 19.7584, -16.5846, -0.675259 )
+
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
@@ -182,19 +188,23 @@ autoplay = ""
 
 texture = ExtResource( 3 )
 hframes = 5
-modulate = Color( 0, 0.00317383, 0.203125, 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+
+visibility/visible = false
+occluder = SubResource( 6 )
+light_mask = 1
 
 [node name="Light2D" type="Light2D" parent="."]
 
-transform/scale = Vector2( 0.26431, 0.258032 )
 enabled = true
 editor_only = false
 texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
 scale = 1.0
-color = Color( 0.2026, 0.0498962, 0.425781, 1 )
-energy = 5.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
 mode = 3
 range/height = 0.0
 range/z_min = -1024
@@ -202,8 +212,8 @@ range/z_max = 1024
 range/layer_min = 0
 range/layer_max = 0
 range/item_mask = 1
-shadow/enabled = false
-shadow/color = Color( 0, 0, 0, 0 )
+shadow/enabled = true
+shadow/color = Color( 0, 0, 1, 0.120235 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
