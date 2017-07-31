@@ -62,37 +62,34 @@ func dec_food():
 func set_day():
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
-
+	get_node("Forest").day_finished()
+	get_node("Beach").day_finished()
+	state = game_state.DAY
+	get_node("TIME").set_text("DAY")
 	var timer = get_node("Timer")
-	var fade_half_len = animator.get_current_animation_length() / 2
-	timer.set_wait_time(fade_half_len)
+	timer.set_wait_time(animator.get_current_animation_length() / 2)
 	timer.connect("timeout", sanity_bar, "hide", [],
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", hunger_bar, "hide", [],
 	              CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("FireManager"), "day_comes",
+	              [], CONNECT_ONESHOT)
 	timer.start()
-
-	get_node("Forest").day_finished()
-	get_node("Beach").day_finished()
-	get_node("FireManager").day_comes()
-	state = game_state.DAY
-	get_node("TIME").set_text("DAY")
 
 func set_night():
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
-	get_node("FireManager").night_comes()
 	night_accum = 0
 	state = game_state.NIGHT
 	get_node("TIME").set_text("NIGHT")
-
 	var timer = get_node("Timer")
-	var fade_half_len = animator.get_current_animation_length() / 2
-	timer.set_wait_time(fade_half_len)
+	timer.set_wait_time(animator.get_current_animation_length() / 2)
 	timer.connect("timeout", sanity_bar, "show", [],
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", hunger_bar, "show", [],
 	              CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("FireManager"), "night_comes",
+	              [], CONNECT_ONESHOT)
 	timer.start()
 
 # Wood get/set
