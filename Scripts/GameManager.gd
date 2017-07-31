@@ -24,6 +24,8 @@ export var hunger_dec_kindle = 10
 export var hunger_inc_eat = 10
 onready var hunger_bar = get_node("Hunger")
 
+var song_pos = 0
+
 func _ready():
 	state = game_state.DAY
 	night_accum = 0
@@ -76,6 +78,8 @@ func set_day():
 	timer.connect("timeout", get_node("FireManager"), "day_comes",
 	              [], CONNECT_ONESHOT)
 	timer.start()
+	get_node("StreamPlayer").stop()
+	song_pos = get_node("StreamPlayer").get_pos()
 
 func set_night():
 	var animator = get_node("Fade/AnimationPlayer")
@@ -91,6 +95,7 @@ func set_night():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("FireManager"), "night_comes",
 	              [], CONNECT_ONESHOT)
+	get_node("StreamPlayer").play(song_pos)
 	timer.start()
 
 # Wood get/set
