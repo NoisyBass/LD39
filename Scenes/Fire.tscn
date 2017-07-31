@@ -1,13 +1,24 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://Scripts/FireManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Tree.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/CampFire.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/Light3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Audio/Fireplace.smp" type="Sample" id=5]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="OccluderPolygon2D" id=1]
 
-resource/name = "High Fire"
+closed = true
+cull_mode = 0
+polygon = Vector2Array( 0.622715, -11.7883, 16.7546, 0.758686, 17.1131, 22.6263, 0.264225, 33.3809, -17.6601, 19.7584, -16.5846, -0.675259 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.5304, 34.3147 )
+
+[sub_resource type="Animation" id=3]
+
 length = 0.4
 loop = true
 step = 0.05
@@ -30,80 +41,6 @@ tracks/1/keys = {
 "transitions": FloatArray( 1 ),
 "update": 0,
 "values": [ Color( 0.897369, 1, 0.308594, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:texture")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-
-resource/name = "Low Fire"
-length = 0.4
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": FloatArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Color( 0.414848, 0.396729, 0.976562, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:texture")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource/name = "Max Fire"
-length = 0.4
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": FloatArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 0.308594, 0.308594, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:texture")
@@ -139,6 +76,78 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
+"values": [ Color( 0.414848, 0.396729, 0.976562, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:texture")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.308594, 0.308594, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:texture")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
@@ -152,16 +161,14 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="SampleLibrary" id=7]
 
-closed = true
-cull_mode = 0
-polygon = Vector2Array( 0.622715, -11.7883, 16.7546, 0.758686, 17.1131, 22.6263, 0.264225, 33.3809, -17.6601, 19.7584, -16.5846, -0.675259 )
-
-[sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
-extents = Vector2( 16.5304, 34.3147 )
+samples/Fireplace = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
 
 [node name="FireManager" type="Node2D"]
 
@@ -170,30 +177,17 @@ day_fire = ExtResource( 2 )
 night_anims = [ "Low Fire", "Medium Fire", "High Fire", "Max Fire" ]
 night_timeouts = [ 60, 40, 30, 15 ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-"anims/High Fire" = SubResource( 1 )
-"anims/Low Fire" = SubResource( 2 )
-"anims/Max Fire" = SubResource( 3 )
-"anims/Medium Fire" = SubResource( 4 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = ""
-
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 3 )
 hframes = 5
+modulate = Color( 0.897369, 1, 0.308594, 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 
 visibility/visible = false
-occluder = SubResource( 6 )
+occluder = SubResource( 1 )
 light_mask = 1
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -222,7 +216,7 @@ shadow/item_mask = 1
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -232,9 +226,34 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+"anims/High Fire" = SubResource( 3 )
+"anims/Low Fire" = SubResource( 4 )
+"anims/Max Fire" = SubResource( 5 )
+"anims/Medium Fire" = SubResource( 6 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 7 )
+config/pitch_random = 0.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 

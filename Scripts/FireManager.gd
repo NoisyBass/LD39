@@ -9,7 +9,9 @@ export var night_timeouts = [60, 40, 30, 15]
 onready var animator = get_node("AnimationPlayer")
 onready var fire_sprite = get_node("Sprite")
 onready var light = get_node("Light2D")
+onready var player = get_node("SamplePlayer2D")
 var since_last_kindle
+var fire_voice
 
 func _ready():
 	set_process(true)
@@ -31,11 +33,13 @@ func night_comes():
 	animator.play(night_anims[0])
 	light.set_scale(Vector2(1, 1))
 	light.show()
+	fire_voice = player.play("Fireplace")
 
 func day_comes():
 	animator.stop()
 	fire_sprite.set_texture(day_fire)
 	light.hide()
+	player.stop_all()
 
 func get_fire_level():
 	return night_anims.find(animator.get_current_animation())
@@ -48,6 +52,7 @@ func kindle():
 	else:
 		print("Fire at max")
 	since_last_kindle = 0
+	player.voice_set_volume_scale_db(fire_voice, 5)
 
 func unkindle():
 	var idx = night_anims.find(animator.get_current_animation())

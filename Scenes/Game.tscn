@@ -128,7 +128,6 @@ texture = ExtResource( 8 )
 
 [node name="Wood" type="Label" parent="."]
 
-visibility/blend_mode = 4
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -155,7 +154,6 @@ texture = ExtResource( 9 )
 
 [node name="Hunger" type="TextureProgress" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 visibility/blend_mode = 4
 focus/ignore_mouse = false
@@ -198,7 +196,6 @@ max_lines_visible = -1
 
 [node name="Sanity" type="TextureProgress" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 visibility/blend_mode = 4
 focus/ignore_mouse = false
