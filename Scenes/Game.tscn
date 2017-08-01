@@ -38,18 +38,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 
-length = 2.0
+length = 3.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 1, 2 ),
-"transitions": FloatArray( 1, 1, 1 ),
+"times": FloatArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.392157 ), Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0.392157 ), Color( 0, 0, 0, 0 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -106,7 +106,6 @@ night_timeouts = [ 7, 5, 3, 2 ]
 
 [node name="Fade" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, -0.814514 )
 transform/scale = Vector2( 63.9367, 47.9252 )
 texture = ExtResource( 8 )
