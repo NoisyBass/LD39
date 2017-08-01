@@ -106,8 +106,7 @@ night_timeouts = [ 7, 5, 3, 2 ]
 
 [node name="Fade" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0, -0.814514 )
-transform/scale = Vector2( 63.9367, 47.9252 )
+transform/scale = Vector2( 64, 48 )
 texture = ExtResource( 8 )
 centered = false
 modulate = Color( 0, 0, 0, 0 )
