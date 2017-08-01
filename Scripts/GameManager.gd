@@ -33,7 +33,7 @@ func _ready():
 	wood_label.set_text(str(wood))
 	food_label.set_text(str(wood))
 	set_process(true)
-	get_node("SamplePlayer").play("Jungle")
+	get_node("JunglePlayer").play()
 	get_node("Player/PlayerAnim").play("player_idle")
 
 func _process(delta):
@@ -82,7 +82,7 @@ func set_day():
 	              [], CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("Eyes"), "hide",
 	              [], CONNECT_ONESHOT)
-	timer.connect("timeout", get_node("SamplePlayer"), "play", ["Jungle"],
+	timer.connect("timeout", get_node("JunglePlayer"), "play", [],
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("StreamPlayer"), "stop", [],
 	              CONNECT_ONESHOT)
@@ -94,9 +94,6 @@ func set_day():
 	tween.start()
 	song_pos = get_node("StreamPlayer").get_pos()
 	state = game_state.DAY
-
-func dumb(x):
-	print(x)
 
 func set_night():
 	var animator = get_node("Fade/AnimationPlayer")
@@ -114,7 +111,7 @@ func set_night():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("Eyes"), "show", [],
 	              CONNECT_ONESHOT)
-	timer.connect("timeout", get_node("SamplePlayer"), "stop_all", [],
+	timer.connect("timeout", get_node("JunglePlayer"), "stop", [],
 	              CONNECT_ONESHOT)
 	get_node("StreamPlayer").set_volume(0)
 	get_node("StreamPlayer").play(song_pos)
