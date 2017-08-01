@@ -38,7 +38,7 @@ func night_comes():
 	animator.play(night_anims[0])
 	light.set_scale(Vector2(1.1, 1.1))
 	light.show()
-	fire_voice = player.play("Fireplace")
+	get_node("StreamPlayer").play()
 
 func day_comes():
 	animator.stop()
@@ -47,6 +47,7 @@ func day_comes():
 	fire_sprite.set_texture(day_fire)
 	light.hide()
 	player.stop_all()
+	get_node("StreamPlayer").stop()
 
 func get_fire_level():
 	return night_anims.find(animator.get_current_animation())
@@ -58,13 +59,14 @@ func kindle():
 		light.scale(Vector2(1.2, 1.2))
 		since_last_kindle = 0
 		player.play("Kindle")
-		player.voice_set_volume_scale_db(fire_voice, 5)
+		get_node("StreamPlayer").set_volume(get_node("StreamPlayer").get_volume() + 3)
 	else:
 		print("Fire at max")
 
 func unkindle():
 	var idx = night_anims.find(animator.get_current_animation())
-	if idx > 0 and since_last_kindle >= night_timeouts[idx]:
+	if (idx > 0 and since_last_kindle >= night_timeouts[idx] and
+	    not get_parent().is_day()):
 		animator.play(night_anims[idx - 1])
 		light.scale(Vector2(0.8, 0.8))
-		player.voice_set_volume_scale_db(fire_voice, -5)
+		get_node("StreamPlayer").set_volume(get_node("StreamPlayer").get_volume() - 3)

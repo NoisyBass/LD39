@@ -7,8 +7,8 @@
 [ext_resource path="res://Assets/Graphics/fire_1.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Graphics/fire_4.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/fire_2.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Audio/Fireplace.smp" type="Sample" id=8]
-[ext_resource path="res://Assets/Audio/Kindle.smp" type="Sample" id=9]
+[ext_resource path="res://Assets/Audio/Kindle.smp" type="Sample" id=8]
+[ext_resource path="res://Assets/Audio/Fireplace.ogg" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -164,17 +164,11 @@ tracks/2/keys = {
 
 [sub_resource type="SampleLibrary" id=6]
 
-samples/Fireplace = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 8 )
-}
 samples/Kindle = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 9 )
+"sample": ExtResource( 8 )
 }
 
 [node name="FireManager" type="Node2D"]
@@ -255,6 +249,17 @@ params/attenuation/distance_exp = 1.0
 config/polyphony = 5
 config/samples = SubResource( 6 )
 config/pitch_random = 0.0
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 9 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 
