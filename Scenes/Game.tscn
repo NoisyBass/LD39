@@ -55,7 +55,7 @@ tracks/0/keys = {
 [sub_resource type="SampleLibrary" id=3]
 
 samples/Jungle = {
-"db": -30.0,
+"db": -20.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 18 )

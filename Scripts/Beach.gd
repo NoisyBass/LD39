@@ -15,7 +15,7 @@ func _ready():
 
 func _on_Beach_input_event( viewport, event, shape_idx ):
 	if (get_parent().is_day() and food > 0):
-		if (event.type==InputEvent.MOUSE_BUTTON and event.pressed):
+		if (event.type == InputEvent.MOUSE_BUTTON and event.pressed):
 			get_parent().add_food()
 			fishes[food-1].kill()
 			add_food(-1)
