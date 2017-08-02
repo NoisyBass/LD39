@@ -88,7 +88,7 @@ func set_day():
 	              CONNECT_ONESHOT)
 	timer.start()
 	var tween = get_node("Tween")
-	tween.interpolate_method(get_node("StreamPlayer"), "set_volume", 1, 0,
+	tween.interpolate_method(get_node("StreamPlayer"), "set_volume", 2, 0,
 	                         animator.get_current_animation_length(),
 	                         0, 2)
 	tween.start()
@@ -116,7 +116,7 @@ func set_night():
 	get_node("StreamPlayer").set_volume(0)
 	get_node("StreamPlayer").play(song_pos)
 	var tween = get_node("Tween")
-	tween.interpolate_method(get_node("StreamPlayer"), "set_volume", 0, 1,
+	tween.interpolate_method(get_node("StreamPlayer"), "set_volume", 0, 2,
 	                         animator.get_current_animation_length(),
 	                         0, 2)
 	tween.start()
