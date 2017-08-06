@@ -5,8 +5,6 @@ var state
 
 export var night_duration = 5.0
 var night_accum
-export var nights_to_win = 3
-var current_nights
 
 var wood = 0 setget set_wood, get_wood
 onready var wood_label = get_node("Wood")
@@ -29,7 +27,6 @@ var song_pos = 0
 func _ready():
 	state = game_state.DAY
 	night_accum = 0
-	current_nights = 0
 	wood_label.set_text(str(wood))
 	food_label.set_text(str(wood))
 	set_process(true)
@@ -40,9 +37,6 @@ func _process(delta):
 	if (state == game_state.NIGHT):
 		night_accum += delta
 		if (night_accum >= night_duration):
-			current_nights += 1
-			if (current_nights == nights_to_win):
-				get_node("/root/Global").goto_scene("res://Scenes/YouWin.tscn")
 			set_day()
 		else:
 			set_hunger(hunger - delta * hunger_dec_time)
@@ -53,6 +47,9 @@ func add_wood():
 	if (state == game_state.DAY):
 		set_night()
 		set_wood(wood + 1)
+		
+func dec_wood():
+	set_wood(wood - 1)
 
 func add_food():
 	if (state == game_state.DAY):

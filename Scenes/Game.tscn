@@ -1,23 +1,24 @@
-[gd_scene load_steps=21 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Scene.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Forest.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Graphics/Water.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Graphics/Eyes.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Font/fon32.fnt" type="BitmapFont" id=10]
-[ext_resource path="res://Assets/Graphics/Fish.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Graphics/Stick.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Graphics/under_bar.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Graphics/progress_bar_4.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Font/font24.fnt" type="BitmapFont" id=15]
-[ext_resource path="res://Assets/Graphics/progress_bar.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Audio/Forest.ogg" type="AudioStream" id=17]
-[ext_resource path="res://Assets/Audio/Jungle.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Scenes/Boat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Forest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Beach.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Graphics/Water.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Graphics/texture.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Eyes.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Font/fon32.fnt" type="BitmapFont" id=11]
+[ext_resource path="res://Assets/Graphics/Fish.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Stick.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/under_bar.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/progress_bar_4.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Font/font24.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://Assets/Graphics/progress_bar.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Audio/Forest.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Audio/Jungle.ogg" type="AudioStream" id=19]
 
 [sub_resource type="Animation" id=1]
 
@@ -56,7 +57,6 @@ tracks/0/keys = {
 
 script/script = ExtResource( 1 )
 night_duration = 10.0
-nights_to_win = 5
 sanity_mul = [ -4, -2, 0, 1 ]
 sanity_inc_dec = 0.5
 hunger_dec_time = 2
@@ -68,21 +68,26 @@ hunger_inc_eat = 10
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Forest" parent="." instance=ExtResource( 3 )]
+[node name="Boat" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 310, 360 )
+transform/scale = Vector2( 0.519388, 0.519388 )
+
+[node name="Forest" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 100.992, 99.4844 )
 
-[node name="Beach" parent="." instance=ExtResource( 4 )]
+[node name="Beach" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 539.83, 379.178 )
 
 [node name="Water" type="Sprite" parent="."]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 modulate = Color( 1, 1, 1, 0.705882 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
+[node name="Player" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 310, 180 )
@@ -100,7 +105,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="FireManager" parent="." instance=ExtResource( 7 )]
+[node name="FireManager" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 319.885, 239.914 )
 night_timeouts = [ 7, 5, 3, 2 ]
@@ -109,7 +114,7 @@ night_timeouts = [ 7, 5, 3, 2 ]
 
 editor/display_folded = true
 transform/scale = Vector2( 64, 48 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 centered = false
 modulate = Color( 0, 0, 0, 0 )
 
@@ -134,49 +139,49 @@ visibility/blend_mode = 4
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 43.0001, 30.0001 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite1" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 127, 56.0002 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite2" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 52.0002, 139 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite3" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 616.002, 96.0003 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite4" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 559.002, 53.0002 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite5" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 605.002, 30.0001 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite6" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 472.001, 14 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Sprite7" type="Sprite" parent="Eyes"]
 
 visibility/blend_mode = 4
 transform/pos = Vector2( 60.0002, 89.0003 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Food" type="Label" parent="."]
 
@@ -190,7 +195,7 @@ margin/left = 268.0
 margin/top = 10.0
 margin/right = 296.0
 margin/bottom = 36.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -204,7 +209,7 @@ max_lines_visible = -1
 
 visibility/blend_mode = 4
 transform/pos = Vector2( -17.1996, 15.1696 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Wood" type="Label" parent="."]
 
@@ -218,7 +223,7 @@ margin/left = 365.0
 margin/top = 11.0
 margin/right = 402.0
 margin/bottom = 47.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -232,7 +237,7 @@ max_lines_visible = -1
 
 visibility/blend_mode = 4
 transform/pos = Vector2( -9.58484, 15.8497 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="Hunger" type="TextureProgress" parent="."]
 
@@ -254,9 +259,9 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-texture/under = ExtResource( 13 )
+texture/under = ExtResource( 14 )
 texture/over = null
-texture/progress = ExtResource( 14 )
+texture/progress = ExtResource( 15 )
 radial_fill/fill_degrees = 360.0
 radial_fill/center_offset = Vector2( 0, 0 )
 
@@ -271,7 +276,7 @@ margin/left = -82.0
 margin/top = -5.0
 margin/right = -4.0
 margin/bottom = 15.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -301,9 +306,9 @@ range/page = 0.0
 range/value = 100.0
 range/exp_edit = false
 range/rounded = false
-texture/under = ExtResource( 13 )
+texture/under = ExtResource( 14 )
 texture/over = null
-texture/progress = ExtResource( 16 )
+texture/progress = ExtResource( 17 )
 radial_fill/fill_degrees = 360.0
 radial_fill/center_offset = Vector2( 0, 0 )
 
@@ -318,7 +323,7 @@ margin/left = -76.0
 margin/top = -6.0
 margin/right = -4.0
 margin/bottom = 14.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -337,7 +342,7 @@ autostart = false
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 17 )
+stream/stream = ExtResource( 18 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -355,7 +360,7 @@ playback/speed = 1.0
 
 [node name="JunglePlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 18 )
+stream/stream = ExtResource( 19 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -5.0
@@ -375,7 +380,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 14.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "Pick Wood"
@@ -394,10 +399,30 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 14.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "Pick Fish"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="FixBoat" type="Label" parent="."]
+
+visibility/visible = false
+visibility/blend_mode = 4
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "Fix Boat"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -414,7 +439,7 @@ margin/left = 260.0
 margin/top = 129.0
 margin/right = 361.0
 margin/bottom = 149.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "EAT"
@@ -435,7 +460,7 @@ margin/left = 266.0
 margin/top = 274.0
 margin/right = 367.0
 margin/bottom = 294.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "KINDLE"

@@ -75,7 +75,7 @@ func unkindle():
 
 
 func _on_Area2D_mouse_enter():
-	if ((not get_parent().is_day()) && get_parent().wood > 0):
+	if ((not get_parent().is_day()) && get_parent().wood):
 		label.show()
 
 func _on_Area2D_mouse_exit():
