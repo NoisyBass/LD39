@@ -263,4 +263,8 @@ stream/buffering_ms = 500
 
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 
+[connection signal="mouse_enter" from="Area2D" to="." method="_on_Area2D_mouse_enter"]
+
+[connection signal="mouse_exit" from="Area2D" to="." method="_on_Area2D_mouse_exit"]
+
 

@@ -10,6 +10,7 @@ onready var animator = get_node("AnimationPlayer")
 onready var fire_sprite = get_node("Sprite")
 onready var light = get_node("Light2D")
 onready var player = get_node("SamplePlayer2D")
+onready var label = get_node("../Kindle")
 var since_last_kindle
 var fire_voice
 
@@ -60,6 +61,7 @@ func kindle():
 		since_last_kindle = 0
 		player.play("Kindle")
 		get_node("StreamPlayer").set_volume(get_node("StreamPlayer").get_volume() + 3)
+		label.hide()
 	else:
 		print("Fire at max")
 
@@ -70,3 +72,11 @@ func unkindle():
 		animator.play(night_anims[idx - 1])
 		light.scale(Vector2(0.8, 0.8))
 		get_node("StreamPlayer").set_volume(get_node("StreamPlayer").get_volume() - 3)
+
+
+func _on_Area2D_mouse_enter():
+	if ((not get_parent().is_day()) && get_parent().wood > 0):
+		label.show()
+
+func _on_Area2D_mouse_exit():
+	label.hide()
