@@ -1,6 +1,6 @@
 extends Node2D
 
-enum game_state { DAY, NIGHT }
+enum game_state { MORNING, AFTERNOON, NIGHT }
 var state
 
 export var night_duration = 5.0
@@ -25,7 +25,7 @@ onready var hunger_bar = get_node("Hunger")
 var song_pos = 0
 
 func _ready():
-	state = game_state.DAY
+	state = game_state.MORNING
 	night_accum = 0
 	wood_label.set_text(str(wood))
 	food_label.set_text(str(wood))
@@ -37,31 +37,41 @@ func _process(delta):
 	if (state == game_state.NIGHT):
 		night_accum += delta
 		if (night_accum >= night_duration):
-			set_day()
+			change_state()
 		else:
 			set_hunger(hunger - delta * hunger_dec_time)
 			var fire_level = get_node("FireManager").get_fire_level()
 			set_sanity(sanity + delta * sanity_inc_dec*sanity_mul[fire_level])
 
 func add_wood():
-	if (state == game_state.DAY):
-		set_night()
+	if (is_day()):
+		change_state()
 		set_wood(wood + 1)
 		
 func dec_wood():
 	set_wood(wood - 1)
+	if (is_day()):
+		change_state()
 
 func add_food():
-	if (state == game_state.DAY):
-		set_night()
+	if (is_day()):
+		change_state()
 		set_food(food + 1)
 		
 func dec_food():
-	if (state == game_state.NIGHT):
+	if (not is_day()):
 		set_food(food - 1)
+		
+func change_state():
+	if (state == game_state.MORNING):
+		set_afternoon()
+	elif (state == game_state.AFTERNOON):
+		set_night()
+	else:
+		set_morning()
 
-func set_day():
-	print('SET DAY')
+func set_morning():
+	print("SET MORNING")
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
 
@@ -90,9 +100,17 @@ func set_day():
 	                         0, 2)
 	tween.start()
 	song_pos = get_node("StreamPlayer").get_pos()
-	state = game_state.DAY
+	state = game_state.MORNING
+	
+func set_afternoon():
+	print("SET AFTERNOON")
+	get_node("Afternoon").show()
+	get_node("Afternoon/AnimationPlayer").play("Afternoon")
+	state = game_state.AFTERNOON
+	
 
 func set_night():
+	print("SET NIGHT")
 	var animator = get_node("Fade/AnimationPlayer")
 	animator.play("Fade")
 	night_accum = 0
@@ -110,6 +128,9 @@ func set_night():
 	              CONNECT_ONESHOT)
 	timer.connect("timeout", get_node("JunglePlayer"), "stop", [],
 	              CONNECT_ONESHOT)
+	timer.connect("timeout", get_node("Afternoon"), "hide", [],
+	              CONNECT_ONESHOT)
+	
 	get_node("StreamPlayer").set_volume(0)
 	get_node("StreamPlayer").play(song_pos)
 	var tween = get_node("Tween")
@@ -162,4 +183,4 @@ func get_hunger():
 	return hunger
 	
 func is_day():
-	return state == game_state.DAY
+	return state != game_state.NIGHT
