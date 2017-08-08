@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 111.845, 112.656 )
+extents = Vector2( 128.811, 108.422 )
 
 [node name="Boat" type="Area2D"]
 
@@ -29,7 +29,7 @@ _update_shape_index = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 4.3757, 15.2168 )
+transform/pos = Vector2( -3.58527, 7.25584 )
 transform/scale = Vector2( 2.32714, 2.32714 )
 texture = ExtResource( 2 )
 

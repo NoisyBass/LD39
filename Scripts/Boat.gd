@@ -16,13 +16,14 @@ func _ready():
 func _on_Boat_input_event( viewport, event, shape_idx ):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed and
 	    get_parent().wood and get_parent().is_day()):
-			get_parent().dec_wood()
 			level += 1
+			get_parent().dec_wood()
 			sprite.set_texture(boat[level])
 			label.hide()
-			if (level == 3):
+			if (is_complete()):
+				get_node("../Player/PlayerAnim").play("player_win")
 				var t = Timer.new()
-				t.set_wait_time(2)
+				t.set_wait_time(3)
 				t.set_one_shot(true)
 				self.add_child(t)
 				t.start()
@@ -45,3 +46,6 @@ func _process(delta):
 	pos.x += 10
 	pos.y -= 10
 	label.set_pos(pos)
+	
+func is_complete():
+	return level == 3

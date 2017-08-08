@@ -50,7 +50,8 @@ func add_wood():
 		
 func dec_wood():
 	set_wood(wood - 1)
-	if (is_day()):
+	if (is_day() and not get_node("Boat").is_complete()):
+		print("build")
 		change_state()
 
 func add_food():
