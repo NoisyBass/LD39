@@ -19,6 +19,7 @@ func _on_Boat_input_event( viewport, event, shape_idx ):
 			level += 1
 			get_parent().dec_wood()
 			sprite.set_texture(boat[level])
+			get_node("SamplePlayer").play("Boat")
 			label.hide()
 			if (is_complete()):
 				get_node("../Player/PlayerAnim").play("player_win")
